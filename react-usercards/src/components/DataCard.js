@@ -2,12 +2,11 @@ import React from "react";
 
 const DataCard = props => {
     return (
-        <div className= "card">
-            {props.card.map (item => {
+        <div className= "followers">
+            {props.followers.map (item => {
                 return (
-                    <div className= "followerCard" key={item.id}>
-                        <p>{item.login}</p>
-                        {/* <p>{item.}</p> */}
+                    <div>
+                        <p>Followers: {item.followers}</p>
                     </div>
                 );
             })}

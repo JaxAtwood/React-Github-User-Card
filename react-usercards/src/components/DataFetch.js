@@ -12,31 +12,44 @@
 
 import React from "react";
 import axios from "axios";
+// import DataCard from "./DataCard";
 
 class DataFetch extends React.Component {
     state = {
-        user: ""
+        user: "",
+        followers: [{}],
     };
 
 componentDidMount() {
-
     axios
         .get("https://api.github.com/users/JaxAtwood")
         .then(res => {
-            // console.log(res.data);
+            console.log(res.data);
             this.setState({
                 user: res.data
         });
     })
         .catch(err => console.log(err));
+
+
+    axios
+        .get("https://api.github.com/users/JaxAtwood/followers")
+        .then(res => {
+            console.log(res.data);
+            this.setState({
+                followers: res.data
+        });
+    })
+        .catch(err => console.log(err));
+
 }
 
 
 render() {
     return (
       <div className="userData">
-        <h1>Jackie's GitHub Info</h1>
-        <p>{this.state.user.login}</p>
+          <h1>My Name is: {this.state.user.name}</h1>
+        <p>Test</p>
       </div>
     );
   }
