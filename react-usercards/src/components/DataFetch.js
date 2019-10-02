@@ -12,19 +12,26 @@
 
 import React from "react";
 import axios from "axios";
-// import DataCard from "./DataCard";
+import DataCard from "./DataCard";
 
 class DataFetch extends React.Component {
     state = {
         user: "",
-        followers: [{}],
+        followers: [],
+        // followNum: "",
+        // followingNum: "",
     };
 
 componentDidMount() {
     axios
         .get("https://api.github.com/users/JaxAtwood")
         .then(res => {
-            console.log(res.data);
+            
+            console.log("userData", res.data);
+            console.log("MyName", res.data.name);
+            console.log("FollowNum", res.data.followers)
+            console.log("FollowingNum", res.data.following)
+
             this.setState({
                 user: res.data
         });
@@ -47,10 +54,19 @@ componentDidMount() {
 
 render() {
     return (
-      <div className="userData">
-          <h1>My Name is: {this.state.user.name}</h1>
-        <p>Test</p>
-      </div>
+        <div className="tracker">
+            <div className="userData">
+                <h1>My Name is: {this.state.user.name}</h1>
+                <h2>I have {this.state.user.followers} followers</h2>
+                <h2>I am following {this.state.user.following} users</h2>
+                <h4>My GitHub handle is: {this.state.user.login}</h4>
+            </div>
+            <div className="followerData">
+                <DataCard 
+                    followers={this.state.followers}
+                />
+            </div>
+        </div>
     );
   }
 }

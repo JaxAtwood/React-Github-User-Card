@@ -1,6 +1,5 @@
 import React from 'react';
 import DataFetch from "./components/DataFetch";
-// import DataCard from "./components/DataCard";
 
 class App extends React.Component {
   constructor() {
@@ -13,11 +12,12 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <h1>React-Github-User-Card Project</h1>
-        <div>
-          <DataFetch 
-            followers={this.state.followers}/>
-        </div>
+        <h1>GitHub Follow Tracker</h1>
+          <div className="followersGrid">
+            <DataFetch 
+              followers={this.state.followers}
+            />
+          </div>
       </div>
     );
   }
