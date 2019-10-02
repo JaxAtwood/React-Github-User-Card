@@ -1,18 +1,7 @@
-// https://api.github.com/users/JaxAtwood
-
-    // "login": "JaxAtwood",
-    // "id": 52709784,
-    // "url": "https://api.github.com/users/JaxAtwood",
-    // "html_url": "https://github.com/JaxAtwood",
-    // "name": "Jackie Atwood",
-    // "location": "Currently Florida... Home to Maryland very soon!",
-    // "bio": "Gamer, coding student, mother of an awesome little girl, proud Finn, and metal head...",
-    // "followers": 44,
-    // "following": 51,
-
 import React from "react";
 import axios from "axios";
 import DataCard from "./DataCard";
+import { Card, MyData } from "./Styles";
 
 class DataFetch extends React.Component {
     state = {
@@ -42,7 +31,7 @@ componentDidMount() {
     axios
         .get("https://api.github.com/users/JaxAtwood/followers")
         .then(res => {
-            console.log(res.data);
+            console.log("followerData", res.data);
             this.setState({
                 followers: res.data
         });
@@ -54,19 +43,19 @@ componentDidMount() {
 
 render() {
     return (
-        <div className="tracker">
-            <div className="userData">
+        <Card className="tracker">
+            <MyData className="userData">
                 <h1>My Name is: {this.state.user.name}</h1>
                 <h2>I have {this.state.user.followers} followers</h2>
                 <h2>I am following {this.state.user.following} users</h2>
                 <h4>My GitHub handle is: {this.state.user.login}</h4>
-            </div>
+            </MyData>
             <div className="followerData">
                 <DataCard 
                     followers={this.state.followers}
                 />
             </div>
-        </div>
+        </Card>
     );
   }
 }

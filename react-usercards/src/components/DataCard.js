@@ -1,18 +1,19 @@
 import React from "react";
+import { TheirData, Box, CardTitle } from "./Styles";
 
 const DataCard = props => {
     console.log("This is props", props);
     return (
-        <div className= "followers">
-            <h3>*My Followers*</h3>
+        <Box className= "followers">
+            <CardTitle>*My Followers*</CardTitle>
             {props.followers.map (item => {
                 return (
                     <div>
-                        <p>{item.login}</p>
+                        <TheirData>{item.login}</TheirData>
                     </div>
                 );
             })}
-        </div>
+        </Box>
     );
 };
 

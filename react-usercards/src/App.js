@@ -1,5 +1,6 @@
 import React from 'react';
 import DataFetch from "./components/DataFetch";
+import { Body, Title, Grid } from "./components/Styles";
 
 class App extends React.Component {
   constructor() {
@@ -11,14 +12,14 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
-        <h1>GitHub Follow Tracker</h1>
-          <div className="followersGrid">
+      <Body className="App">
+        <Title>GitHub Follow Tracker</Title>
+          <Grid className="followersGrid">
             <DataFetch 
               followers={this.state.followers}
             />
-          </div>
-      </div>
+          </Grid>
+      </Body>
     );
   }
 }
